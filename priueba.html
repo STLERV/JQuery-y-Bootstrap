@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<script>
+$(document).ready(function(){
+  $("#boton1").click(function(){
+    alert("Value: " + $("#username").val());
+	
+	 
+});
+});
+</script>
+
+<script>
+$('#boton2').click(function () {
+          $('table tbody').empty();
+          var username = $('#username').val();
+          $.get('https://api.github.com/users/' + username + '/repos', function(data, status)            
+         
+  });
+</script>
+</head>
+<body>
+
+<p>Name: <input type="text" id="username" value="Pon tu usuario"></p>
+
+<button id= "boton1">Show Value</button>
+
+<button id= "boton2">Cosas</button>
+ 
+<div class="col-sm-8">
+  <h2>Tabla usuario</h2>
+  <p>Hay cosas:</p>
+    <p></p>
+	  <p></p>
+	    <p></p>
+		  <p></p>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Descripción</th>
+        <th>Followers</th>
+      </tr>
+    </thead>
+    
+  </table>
+</div>
+
+</body>
+</html>
