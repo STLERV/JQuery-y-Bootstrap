@@ -7,55 +7,71 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <title>GitHub User Repositories</title>
 </head>
 <body>
 
-<script>
+
+	  
+	  
+ <script>
 $(document).ready(function(){
-  $("#boton1").click(function(){
-    alert("Value: " + $("#username").val());
-	
-	 
-});
-});
+	$("button").click(function(){
+		$("#table").html(""); //primero vacio la tabla existente
+		var usuario = $("#username").val();
+		$.ajax({
+			type:'GET',
+			url:'https://api.github.com/users/'+ usuario +'/repos',
+			dataType: 'json',
+			success: function(data){				
+				$.each(data, function(index, datos){																
+					$("#table").append("<tr><td>" + usuario + "</td><td>" + datos.name + "</td><td>" + datos.description + "</td><td>" + datos.stargazers_count + "</td></tr>");
+				});
+			}
+		})	
+	});
+});	
 </script>
 
-<script>
-$('#boton2').click(function () {
-          $('table tbody').empty();
-          var username = $('#username').val();
-          $.get('https://api.github.com/users/' + username + '/repos', function(data, status)            
-         
-  });
-</script>
-</head>
-<body>
-
-<p>Name: <input type="text" id="username" value="Pon tu usuario"></p>
-
-<button id= "boton1">Show Value</button>
-
-<button id= "boton2">Cosas</button>
- 
 <div class="col-sm-8">
-  <h2>Tabla usuario</h2>
-  <p>Hay cosas:</p>
-    <p></p>
-	  <p></p>
-	    <p></p>
-		  <p></p>
+  <h2>Tabla usuarios</h2>
+  <p>BUENOS DIAS:</p>
+    <p>        </p>
+	  <p>      </p>
+	    <p>      </p>
+		  <p>     </p>
   
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Usuario</th>
-        <th>Descripción</th>
+        <th>Descripcion</th>
         <th>Followers</th>
       </tr>
     </thead>
-    
+    <tbody id="table">     
+    </tbody>
   </table>
 </div>
+
+
+</div>
+
+
+</head>
+<body>
+
+<p>PON NOMBRE: <input type="text" id="username" value="  "></p>
+
+<button id= "boton1">Show Value</button>
+
+
+
+
+
+ 
+
 
 </body>
 </html>
